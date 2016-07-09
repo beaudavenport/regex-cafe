@@ -1,0 +1,73 @@
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 5rem;
+  display: block;
+  z-index: 100;
+  width: 100%;
+  padding: 10px;
+  background: #fff;
+  border-bottom: 1px solid lightgray;
+}
+
+nav h1 {
+  margin: 0;
+  font-size: 3rem;
+  line-height: 5rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: black;
+  text-transform: uppercase;
+  line-height: 5rem;
+}
+
+nav .title {
+  float: left;
+}
+
+.nav-links {
+  float: right;
+  margin-right: 15%;
+}
+
+.nav-links li {
+  list-style: none;
+  padding-left: 20px;
+  padding-right: 20px;
+  position: relative;
+  float: left;
+}
+
+.burger-area {
+  border: 1px solid lightgray;
+  border-radius: 3px;
+  padding: 5px;
+  background-color: #f7f7f7;
+}
+
+.burger-area img {
+  margin-right: -5px;
+}
+
+.highlighted {
+  margin-bottom: 15px;
+}
+
+.regex-char {
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 3rem;
+}
+
+.lesson {
+  min-height: 300px;
+}
+
+.card {
+  border: 1px solid #E1E1E1;
+  border-radius: 4px;
+  padding: 15px;
+}

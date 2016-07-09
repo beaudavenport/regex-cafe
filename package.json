@@ -1,0 +1,15 @@
+{
+  "name": "regex-cafe",
+  "version": "1.0.0",
+  "description": "Learn about Regex by making hamburgers.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Beau Davenport",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^3.0.0",
+    "eslint-plugin-react": "^5.2.2"
+  }
+}
