@@ -1,3 +1,11 @@
+p, a, h1, h2, h3, h4, h5, h6 {
+  letter-spacing: 0.05rem;
+}
+
+.header {
+  text-transform: uppercase;
+}
+
 nav {
   position: fixed;
   top: 0;
@@ -41,6 +49,10 @@ nav .title {
   float: left;
 }
 
+.spacer {
+  height: 10rem;
+}
+
 .burger-area {
   border: 1px solid lightgray;
   border-radius: 3px;
@@ -50,16 +62,22 @@ nav .title {
 
 .burger-area img {
   margin-right: -5px;
+  margin-top: 10px
 }
 
-.highlighted {
-  margin-bottom: 15px;
+.burger-area img.highlighted {
+  margin-top: 0;
+  margin-bottom: 10px;
 }
 
 .regex-char {
   margin-left: 10px;
   margin-right: 10px;
   font-size: 3rem;
+}
+
+.lessons {
+  padding-top: 50px;
 }
 
 .lesson {
@@ -70,4 +88,27 @@ nav .title {
   border: 1px solid #E1E1E1;
   border-radius: 4px;
   padding: 15px;
+}
+.user-big {
+  font-size: 25rem;
+}
+
+.intro {
+  text-align: center;
+  display: table;
+  width: 100%;
+  padding: 0;
+  padding-top: 5rem;
+  margin-bottom: 10rem;
+}
+
+.intro-text {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.intro-user {
+  display: table-cell;
+  text-align: center;
+  padding: 30px;
 }
