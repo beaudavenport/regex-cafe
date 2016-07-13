@@ -61,7 +61,8 @@ nav .title {
   border: 1px solid lightgray;
   border-radius: 3px;
   padding: 5px;
-  background-color: #f7f7f7;
+  background-color: #F7F7E6;
+  text-align: center;
 }
 
 .burger-area img {
@@ -78,6 +79,15 @@ nav .title {
   margin-left: 10px;
   margin-right: 10px;
   font-size: 3rem;
+}
+
+.order-image, .order-ingredient {
+  display: inline-block;
+}
+
+.order-image img {
+  margin-left: 1rem;
+  margin-bottom: -1rem;
 }
 
 .lessons {
@@ -104,6 +114,12 @@ nav .title {
   border: 1px solid #E1E1E1;
   border-radius: 4px;
   padding: 15px;
+}
+
+.lead {
+  font-size: 1.8rem;
+  color: grey;
+  font-style: italic;
 }
 
 .user-big {

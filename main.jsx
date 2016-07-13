@@ -110,9 +110,14 @@ var Lesson = React.createClass({
     var desiredIngredients = this.props.lesson.desiredIngredients.map(function(desired, index) {
       var ingredient = toppings[desired.symbol];
       return (
-        <li key={index}>{desired.quantity}-
-          {ingredient.name}<img src={ingredient.image}/>
-        </li>
+        <div key={index}>
+          <div className="order-ingredient">
+            {desired.quantity}-{ingredient.name}
+          </div>
+          <div className="order-image">
+            <img src={ingredient.image}/>
+          </div>
+        </div>
       );
     });
 
@@ -121,13 +126,13 @@ var Lesson = React.createClass({
         <div className="card-wrapper-cell">
           <div className="bob card">
             <h3>{this.props.lesson.name}</h3>
+            <p className="lead">{this.props.lesson.description}</p>
             <div className="row">
               <div className="six columns">
-                <p>{this.props.lesson.description}</p>
                 <p>Bob tells you he would like a hamburger with: </p>
               </div>
               <div className="six columns">
-                <ul>{desiredIngredients}</ul>
+                <div>{desiredIngredients}</div>
               </div>
             </div>
             <hr />
@@ -150,7 +155,9 @@ var Lesson = React.createClass({
                 {successButton}
               </div>
             </div>
-            <div className="burger-area">{output}</div>
+              <div className="burger-area">
+                {output}
+              </div>
           </div>
         </div>
       </div>
