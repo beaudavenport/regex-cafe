@@ -116,6 +116,10 @@ nav .title {
   padding: 15px;
 }
 
+.lesson-card {
+  font-size: 2rem;
+}
+
 .lead {
   font-size: 1.8rem;
   color: grey;
@@ -144,4 +148,18 @@ nav .title {
   display: table-cell;
   text-align: center;
   vertical-align: middle;
+}
+
+.burger-card {
+  position: relative;
+  text-align: center;
+}
+
+.horizontal {
+  position: relative;
+  height: 10px;
+}
+
+.horizontal img {
+  transform: rotate(-90deg);
 }
