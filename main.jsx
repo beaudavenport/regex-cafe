@@ -73,6 +73,27 @@ var Request = React.createClass({
   }
 });
 
+var Result = React.createClass({
+  render: function() {
+    var result = this.props.resultString.split('').reverse().map(function(topping, index, theArray) {
+      var negativeIndex = theArray.length - index;
+      var style = {zIndex: negativeIndex};
+      return <div className="horizontal" style={style}><img src={toppings[topping].image} /></div>;
+    });
+    return (
+      <div>
+        <div className="horizontal" style={{zIndex: result.length + 1}}>
+          <img src="images/bun-facing-left.png"/>
+        </div>
+        {result}
+        <div className="horizontal" style={{zIndex: 0}}>
+          <img src="images/bun-facing-right.png"/>
+        </div>
+      </div>
+    );
+  }
+});
+
 var NextLessonButton = React.createClass({
   render: function() {
     return (
@@ -107,31 +128,67 @@ var Lesson = React.createClass({
       ? <NextLessonButton lessonNumber={this.props.lesson.number} text="Next Lesson" />
       : null;
 
+    var burgerResult = null;
+    if (this.state.match !== null) {
+      burgerResult = <Result resultString={this.state.match[0]} />;
+    }
+
     var desiredIngredients = this.props.lesson.desiredIngredients.map(function(desired, index) {
       var ingredient = toppings[desired.symbol];
       return (
-        <li key={index}>{desired.quantity}-
-          {ingredient.name}<img src={ingredient.image}/>
-        </li>
+        <div key={index}>
+          <div className="order-ingredient">
+            {desired.quantity}-{ingredient.name}
+          </div>
+          <div className="order-image">
+            <img src={ingredient.image}/>
+          </div>
+        </div>
       );
     });
 
     return (
-      <div>
-        <div className="spacer" id={'lesson-' + this.props.lesson.number}></div>
-        <div className="bob card">
-          <h1>{this.props.lesson.name}</h1>
-          <p>{this.props.lesson.description}</p>
-          <p>Bob is looking for a hamburger with:</p>
-          <ul>{desiredIngredients}</ul>
-          <p>The perfect hamburger for Bob will look like:</p>
-          <Request toppings={toppings} requestString={this.props.lesson.desiredRegex}/>
-          <p>
-            With Regex, we can check to see if there are the ingredients we need in the right order to make the perfect hamburger :
-          </p>
-          <button className="button-primary" onClick={this._checkRegex}>Find Match</button>
-          {successButton}
-          <div className="burger-area">{output}</div>
+      <div className="card-wrapper"id={'lesson-' + this.props.lesson.number}>
+        <div className="card-wrapper-cell">
+          <div className="lesson-card card">
+            <h3>{this.props.lesson.name}</h3>
+            <p className="lead">{this.props.lesson.description}</p>
+            <div className="row">
+              <div className="six columns">
+                <p>Bob tells you he would like a hamburger with (from bottom to top): </p>
+              </div>
+              <div className="six columns">
+                <div>{desiredIngredients}</div>
+              </div>
+            </div>
+            <hr />
+            <div className="row">
+              <div className="six columns">
+                <p>You scribble a quick drawing on your notepad:</p>
+              </div>
+              <div className="six columns">
+                <Request toppings={toppings} requestString={this.props.lesson.desiredRegex}/>
+              </div>
+            </div>
+            <p>
+              The kitchen staff looks for the ingredients...
+            </p>
+            <div className="row btn-row">
+              <div className="columns six">
+                <button className="button-primary" onClick={this._checkRegex}>Find Ingredients</button>
+              </div>
+              <div className="columns six">
+                {successButton}
+              </div>
+            </div>
+              <div className="burger-area">
+                {output}
+              </div>
+              <div className="card burger-card">
+                {burgerResult}
+              </div>
+          </div>
+
         </div>
       </div>
     );
@@ -172,7 +229,6 @@ var App = React.createClass({
     return (
       <div>
         <Navbar />
-        <div className="spacer"></div>
         <div className="container">
           <div className="intro">
             <div className="intro-user">

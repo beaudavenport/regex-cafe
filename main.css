@@ -36,6 +36,10 @@ nav .title {
   float: left;
 }
 
+.btn-row {
+  text-align: center;
+}
+
 .nav-links {
   float: right;
   margin-right: 15%;
@@ -57,7 +61,8 @@ nav .title {
   border: 1px solid lightgray;
   border-radius: 3px;
   padding: 5px;
-  background-color: #f7f7f7;
+  background-color: #F7F7E6;
+  text-align: center;
 }
 
 .burger-area img {
@@ -76,6 +81,15 @@ nav .title {
   font-size: 3rem;
 }
 
+.order-image, .order-ingredient {
+  display: inline-block;
+}
+
+.order-image img {
+  margin-left: 1rem;
+  margin-bottom: -1rem;
+}
+
 .lessons {
   padding-top: 50px;
 }
@@ -84,11 +98,34 @@ nav .title {
   min-height: 300px;
 }
 
+.card-wrapper {
+  padding-top: 5rem;
+  display: table;
+  height: 100vh;
+  width: 100%;
+}
+
+.card-wrapper-cell {
+  display: table-cell;
+  vertical-align: middle;
+}
+
 .card {
   border: 1px solid #E1E1E1;
   border-radius: 4px;
   padding: 15px;
 }
+
+.lesson-card {
+  font-size: 2rem;
+}
+
+.lead {
+  font-size: 1.8rem;
+  color: grey;
+  font-style: italic;
+}
+
 .user-big {
   font-size: 25rem;
 }
@@ -97,8 +134,8 @@ nav .title {
   text-align: center;
   display: table;
   width: 100%;
+  height: 100vh;
   padding: 0;
-  padding-top: 5rem;
   margin-bottom: 10rem;
 }
 
@@ -110,5 +147,19 @@ nav .title {
 .intro-user {
   display: table-cell;
   text-align: center;
-  padding: 30px;
+  vertical-align: middle;
+}
+
+.burger-card {
+  position: relative;
+  text-align: center;
+}
+
+.horizontal {
+  position: relative;
+  height: 10px;
+}
+
+.horizontal img {
+  transform: rotate(-90deg);
 }
