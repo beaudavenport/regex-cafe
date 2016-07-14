@@ -1,26 +1,55 @@
 var toppings = {
   'bun-right': {
-    image: 'images/bun-facing-right.png'
+    image: 'images/bun-bottom-400.png'
   },
   'bun-left': {
-    image: 'images/bun-facing-left.png'
+    image: 'images/bun-top-400.png'
   },
+
+  // cheese/numbers
   '1': {
-    image: 'images/american-cheese-right.png',
+    image: 'images/american-cheese-400.png',
     name: 'american cheese'
   },
   '2': {
-    image: 'images/gouda-cheese-right.png'
+    image: 'images/gouda-cheese-400.png'
   },
   '3': {
-    image: 'images/swiss-cheese-right.png'
+    image: 'images/swiss-cheese-400.png'
   },
+
+  // letters/veggies
   'a': {
-    image: 'images/jalepenos-right.png'
+    image: 'images/lettuce-400.png'
   },
+  'b': {
+    image: 'images/jalepenos-400.png'
+  },
+  'c': {
+    image: 'images/pickles-400.png'
+  },
+  'd': {
+    image: 'images/red-onion-400.png'
+  },
+
+  //meats/characters
   '&': {
-    image: 'images/hamburger-right.png',
+    image: 'images/hamburger-patty-400.png',
     name: 'hamburger patty'
+  },
+  '!': {
+    image: 'images/bacon-400.png',
+    name: 'bacon'
+  },
+  '@': {
+    image: 'images/egg-400.png',
+    name: 'bacon'
+  },
+
+  //mayo/blank space
+  ' ': {
+    image: 'images/mayonaise-400.png',
+    name: 'mayo'
   }
 };
 
@@ -53,7 +82,7 @@ var lessons = [
       }
     ],
     desiredRegex: '&1',
-    availableRegex: '12&a&123'
+    availableRegex: '12&a&123!123abcd !&@'
   }
 ];
 
@@ -66,9 +95,9 @@ var Request = React.createClass({
         : <span key={'topping-' + index} className="regex-char">{topping}</span>;
     }.bind(this));
     return (
-      <div className="burger-area"><img src="images/bun-facing-right.png"/>
+      <div className="burger-area"><img src="images/bun-bottom-400.png"/>
         {requestContent}
-        <img src="images/bun-facing-left.png"/></div>
+        <img src="images/bun-top-400.png"/></div>
     );
   }
 });
@@ -83,11 +112,11 @@ var Result = React.createClass({
     return (
       <div>
         <div className="horizontal" style={{zIndex: result.length + 1}}>
-          <img src="images/bun-facing-left.png"/>
+          <img src="images/bun-top-400.png"/>
         </div>
         {result}
         <div className="horizontal" style={{zIndex: 0}}>
-          <img src="images/bun-facing-right.png"/>
+          <img src="images/bun-bottom-400.png"/>
         </div>
       </div>
     );
