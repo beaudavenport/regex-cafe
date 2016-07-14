@@ -71,12 +71,15 @@ nav .title {
 
 .burger-area img {
   margin-right: -10px;
-  margin-top: 10px
+  margin-top: 10px;
 }
 
 .burger-area img.highlighted {
-  margin-top: 0;
-  margin-bottom: 10px;
+}
+
+.burger-area img.unhighlighted {
+  opacity: 0;
+  transition: opacity 3s ease;
 }
 
 .regex-char {
@@ -131,8 +134,20 @@ nav .title {
   font-style: italic;
 }
 
+.subtext {
+  margin: 0;
+  font-style: italic;
+  text-transform: uppercase;
+  color: lightgray;
+}
+
+.lead-word {
+  font-size: 3rem;
+}
+
 .user-big {
-  font-size: 25rem;
+  font-size: 20rem;
+  margin-bottom: 3rem;
 }
 
 .intro {
@@ -142,6 +157,11 @@ nav .title {
   height: 100vh;
   padding: 0;
   margin-bottom: 10rem;
+}
+
+.intro-cell {
+  display: table-cell;
+  vertical-align: middle;
 }
 
 .intro-text {
@@ -160,9 +180,19 @@ nav .title {
   text-align: center;
 }
 
+.burger-card-cell {
+  padding-top: 5.8rem;
+}
+
+.desired-wrapper {
+  margin: 0 auto;
+  width: 70%;
+  text-align: center;
+}
+
 .horizontal {
   position: relative;
-  height: 10px;
+  margin-top: -5.8rem;
 }
 
 .horizontal img {

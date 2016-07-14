@@ -148,6 +148,8 @@ var Lesson = React.createClass({
       if (this.state.match !== null) {
         if (index >= this.state.match.index && index < this.state.match.index + this.state.match[0].length) {
           styling = 'highlighted';
+        } else {
+          styling = 'unhighlighted';
         }
       }
       return <img key={this.props.lesson.number + '-' + index} className={styling} src={toppings[topping].image}/>;
@@ -162,15 +164,16 @@ var Lesson = React.createClass({
       burgerResult = <Result resultString={this.state.match[0]} />;
     }
 
-    var desiredIngredients = this.props.lesson.desiredIngredients.map(function(desired, index) {
+    var desiredIngredients = this.props.lesson.desiredIngredients.reverse().map(function(desired, index) {
       var ingredient = toppings[desired.symbol];
+      var orderImage = ingredient === undefined ? null : <img src={ingredient.image}/>;
       return (
         <div key={index}>
           <div className="order-ingredient">
             {desired.quantity}-{ingredient.name}
           </div>
           <div className="order-image">
-            <img src={ingredient.image}/>
+            {orderImage}
           </div>
         </div>
       );
@@ -179,17 +182,15 @@ var Lesson = React.createClass({
     return (
       <div className="card-wrapper"id={'lesson-' + this.props.lesson.number}>
         <div className="card-wrapper-cell">
-          <div className="lesson-card card">
+          <div className="lesson-card">
             <h3>{this.props.lesson.name}</h3>
             <p className="lead">{this.props.lesson.description}</p>
-            <div className="row">
-              <div className="six columns">
-                <p>Bob tells you he would like a hamburger with (from bottom to top): </p>
-              </div>
-              <div className="six columns">
+              <div className="desired-wrapper card">
+                <p>Bob tells you he would like a hamburger with: </p>
+                <p className="subtext">top</p>
                 <div>{desiredIngredients}</div>
+                <p className="subtext">bottom</p>
               </div>
-            </div>
             <hr />
             <div className="row">
               <div className="six columns">
@@ -199,9 +200,7 @@ var Lesson = React.createClass({
                 <Request toppings={toppings} requestString={this.props.lesson.desiredRegex}/>
               </div>
             </div>
-            <p>
-              The kitchen staff looks for the ingredients...
-            </p>
+            <p>The chef looks for the ingredients...</p>
             <div className="row btn-row">
               <div className="columns six">
                 <button className="button-primary" onClick={this._checkRegex}>Find Ingredients</button>
@@ -214,10 +213,11 @@ var Lesson = React.createClass({
                 {output}
               </div>
               <div className="card burger-card">
-                {burgerResult}
+                <div className="burger-card-cell">
+                  {burgerResult}
+                </div>
               </div>
           </div>
-
         </div>
       </div>
     );
@@ -248,6 +248,42 @@ var Navbar = React.createClass({
   }
 });
 
+var Introduction = React.createClass({
+  render: function() {
+    return (
+      <div className="intro">
+        <div className="intro-cell">
+          <div className="row">
+            <div className="four columns">
+              <i className="fa fa-user user-big"></i>
+              <h6 className="header"><span className="lead-word">Bob,</span> your customer, is famous for <strong>outlandish, oddly specific</strong> hamburger requests.</h6>
+            </div>
+            <div className="four columns">
+              <i className="fa fa-cutlery user-big"></i>
+              <h6 className="header"><span className="lead-word">The chef,</span> unfortunately, <strong>does not speak English</strong> and only has <strong>one hand</strong>.</h6>
+            </div>
+            <div className="four columns">
+              <i className="fa fa-meh-o user-big"></i>
+              <h6 className="header"><span className="lead-word">You,</span> the waiter, will have to serve Bob <strong>the perfect hamburger</strong>.</h6>
+            </div>
+          </div>
+          <NextLessonButton lessonNumber={0} text="Begin" />
+        </div>
+      </div>
+    );
+    // <div className="intro">
+    //   <div className="intro-user">
+    //   <i className="fa fa-user user-big"></i>
+    //   </div>
+    //   <div className="intro-text">
+    //       <h6 className="header">This is Bob. Bob is looking for a great hamburger.</h6>
+    //       <h6 className="header">You can create the perfect hamburger for Bob- using Regex.</h6>
+    //       <NextLessonButton lessonNumber={0} text="Begin" />
+    //   </div>
+    // </div>
+  }
+});
+
 var App = React.createClass({
   render: function() {
 
@@ -259,16 +295,7 @@ var App = React.createClass({
       <div>
         <Navbar />
         <div className="container">
-          <div className="intro">
-            <div className="intro-user">
-            <i className="fa fa-user user-big"></i>
-            </div>
-            <div className="intro-text">
-                <h6 className="header">This is Bob. Bob is looking for a great hamburger.</h6>
-                <h6 className="header">You can create the perfect hamburger for Bob- using Regex.</h6>
-                <NextLessonButton lessonNumber={0} text="Begin" />
-            </div>
-          </div>
+          <Introduction />
         </div>
         <div className="container lessons">
           {lessonsOutput}
