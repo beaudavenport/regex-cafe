@@ -222,3 +222,8 @@ nav .title {
 .horizontal img {
   transform: rotate(-90deg);
 }
+
+.faq-section {
+  text-align: center;
+  padding-top: 10rem;
+}
