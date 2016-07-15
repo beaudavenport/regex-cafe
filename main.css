@@ -185,6 +185,7 @@ nav .title {
 }
 
 .burger-result {
+  margin-top: 3rem;
   position: relative;
   text-align: center;
   opacity: 0;
