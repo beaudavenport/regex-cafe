@@ -129,6 +129,10 @@ nav .title {
   text-align: center;
 }
 
+.order-area {
+  margin-bottom: 3rem;
+}
+
 .lead {
   font-size: 1.8rem;
   color: grey;
@@ -193,7 +197,14 @@ nav .title {
 }
 
 .burger-result-cell {
-  padding-top: 5.8rem;
+  transform: rotate(90deg);
+  padding-top: 5.3rem;
+}
+
+.burger-result.complete .burger-result-cell {
+  transform: none;
+  transition: transform 1s ease;
+  transition-delay: 2s;
 }
 
 .desired-wrapper {
@@ -204,7 +215,7 @@ nav .title {
 
 .horizontal {
   position: relative;
-  margin-top: -5.8rem;
+  margin-top: -5.3rem;
 }
 
 .horizontal img {

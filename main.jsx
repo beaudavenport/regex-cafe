@@ -104,13 +104,13 @@ var Request = React.createClass({
 
 var Result = React.createClass({
   render: function() {
-    var result = this.props.resultString.split('').reverse().map(function(topping, index, theArray) {
+    var result = this.props.resultString.split('').slice().reverse().map(function(topping, index, theArray) {
       var negativeIndex = theArray.length - index;
       var style = {zIndex: negativeIndex};
       return <div className="horizontal" style={style}><img src={toppings[topping].image} /></div>;
     });
     return (
-      <div>
+      <div className="burger-result-wrapper">
         <div className="horizontal" style={{zIndex: result.length + 1}}>
           <img src="images/bun-top-400.png"/>
         </div>
@@ -162,7 +162,7 @@ var Lesson = React.createClass({
       burgerResultStyling += ' complete';
     }
 
-    var desiredIngredients = this.props.lesson.desiredIngredients.reverse().map(function(desired, index) {
+    var desiredIngredients = this.props.lesson.desiredIngredients.slice().reverse().map(function(desired, index) {
       var ingredient = toppings[desired.symbol];
       var orderImage = ingredient === undefined ? null : <img src={ingredient.image}/>;
       return (
@@ -183,7 +183,7 @@ var Lesson = React.createClass({
           <div className="lesson-card">
             <h3>{this.props.lesson.name}</h3>
             <p className="lead">{this.props.lesson.description}</p>
-            <div className="row">
+            <div className="row order-area">
               <div className="six columns card">
                 <p className="lead">Bob tells you he would like a hamburger with: </p>
                 <p className="subtext">top</p>
@@ -195,7 +195,7 @@ var Lesson = React.createClass({
                 <Request toppings={toppings} requestString={this.props.lesson.desiredRegex}/>
               </div>
             </div>
-            <p className="lead">The chef looks for the ingredients...</p>
+            <p className="lead">Your chef looks for the right ingredients that he can grab in one chunk...</p>
             <button className="button-primary" onClick={this._checkRegex}>Find Ingredients</button>
             <div className="burger-area">
               {output}
@@ -266,16 +266,6 @@ var Introduction = React.createClass({
         </div>
       </div>
     );
-    // <div className="intro">
-    //   <div className="intro-user">
-    //   <i className="fa fa-user user-big"></i>
-    //   </div>
-    //   <div className="intro-text">
-    //       <h6 className="header">This is Bob. Bob is looking for a great hamburger.</h6>
-    //       <h6 className="header">You can create the perfect hamburger for Bob- using Regex.</h6>
-    //       <NextLessonButton lessonNumber={0} text="Begin" />
-    //   </div>
-    // </div>
   }
 });
 
