@@ -1,91 +1,3 @@
-var toppings = {
-  'bun-right': {
-    image: 'images/bun-bottom-400.png'
-  },
-  'bun-left': {
-    image: 'images/bun-top-400.png'
-  },
-
-  // cheese/numbers
-  '1': {
-    image: 'images/american-cheese-400.png',
-    name: 'american cheese'
-  },
-  '2': {
-    image: 'images/gouda-cheese-400.png'
-  },
-  '3': {
-    image: 'images/swiss-cheese-400.png'
-  },
-
-  // letters/veggies
-  'a': {
-    image: 'images/lettuce-400.png'
-  },
-  'b': {
-    image: 'images/jalepenos-400.png'
-  },
-  'c': {
-    image: 'images/pickles-400.png'
-  },
-  'd': {
-    image: 'images/red-onion-400.png'
-  },
-
-  //meats/characters
-  '&': {
-    image: 'images/hamburger-patty-400.png',
-    name: 'hamburger patty'
-  },
-  '!': {
-    image: 'images/bacon-400.png',
-    name: 'bacon'
-  },
-  '@': {
-    image: 'images/egg-400.png',
-    name: 'bacon'
-  },
-
-  //mayo/blank space
-  ' ': {
-    image: 'images/mayonaise-400.png',
-    name: 'mayo'
-  }
-};
-
-var lessons = [
-  {
-    number: 1,
-    name: 'Lesson One: Plainest of the Plain',
-    description: 'Bob is looking for the simplest possible hamburger. It should be easy to find the ingredients.',
-    desiredIngredients: [
-      {
-        quantity: 1,
-        symbol: '&'
-      }
-    ],
-    desiredRegex: '&',
-    availableRegex: '&'
-  },
-  {
-    number: 2,
-    name: 'Lesson Two: "With cheese, please"',
-    description: 'This time, Bob would like a cheeseburger, with american cheese. Still a pretty easy order.',
-    desiredIngredients: [
-      {
-        quantity: 1,
-        symbol: '&'
-      },
-      {
-        quantity: 1,
-        symbol: '1'
-      }
-    ],
-    desiredRegex: '&1',
-    availableRegex: '12&a&123!123abcd !&@'
-  }
-];
-
 var Request = React.createClass({
   render: function() {
     var requestContent = this.props.requestString.split('').map(function(topping, index) {
@@ -163,15 +75,17 @@ var Lesson = React.createClass({
     }
 
     var desiredIngredients = this.props.lesson.desiredIngredients.slice().reverse().map(function(desired, index) {
-      var ingredient = toppings[desired.symbol];
-      var orderImage = ingredient === undefined ? null : <img src={ingredient.image}/>;
+      var orderImages = desired.symbols.split('').map(function(orderedIngredient) {
+        var ingredient = toppings[orderedIngredient];
+        return ingredient === undefined ? ingredient : <img src={ingredient.image}/>;
+      });
       return (
         <div key={index}>
           <div className="order-ingredient">
-            {desired.quantity}-{ingredient.name}
+            {desired.quantity}-{desired.name}
           </div>
           <div className="order-image">
-            {orderImage}
+            {orderImages}
           </div>
         </div>
       );
