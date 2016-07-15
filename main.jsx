@@ -117,14 +117,25 @@ var Lesson = React.createClass({
             <div className={burgerResultStyling}>
               <h3>Success!</h3>
               <div className="row">
-                <div className="burger-result-cell six columns">
+                <div className="offset-by-four burger-result-cell two columns">
                   {burgerResult}
                 </div>
-                <div className="six columns">
+                <div className="two columns">
                   <p><i className="fa fa-smile-o user-medium"></i></p>
-                  <NextLessonButton lessonNumber={this.props.lesson.number} text="Next Lesson" />
                 </div>
               </div>
+              <div className="row">
+                <div className="four columns">
+                  <p><span className="lead">You used this regex:</span> /{this.props.lesson.desiredRegex.split('|').join('')}/</p>
+                </div>
+                <div className="four columns">
+                  <p><span className="lead">In this text:</span> {this.props.lesson.availableRegex}</p>
+                </div>
+                <div className="four columns">
+                  <p><span className="lead">And found this result:</span> {this.state.match === null ? null : this.state.match[0]}</p>
+                </div>
+            </div>
+            <NextLessonButton lessonNumber={this.props.lesson.number} text="Next Lesson" />
             </div>
           </div>
         </div>
