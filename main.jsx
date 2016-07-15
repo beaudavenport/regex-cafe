@@ -155,13 +155,11 @@ var Lesson = React.createClass({
       return <img key={this.props.lesson.number + '-' + index} className={styling} src={toppings[topping].image}/>;
     }.bind(this));
 
-    var successButton = this.state.match !== null
-      ? <NextLessonButton lessonNumber={this.props.lesson.number} text="Next Lesson" />
-      : null;
-
     var burgerResult = null;
+    var burgerResultStyling = 'card burger-result';
     if (this.state.match !== null) {
       burgerResult = <Result resultString={this.state.match[0]} />;
+      burgerResultStyling += ' complete';
     }
 
     var desiredIngredients = this.props.lesson.desiredIngredients.reverse().map(function(desired, index) {
@@ -185,38 +183,35 @@ var Lesson = React.createClass({
           <div className="lesson-card">
             <h3>{this.props.lesson.name}</h3>
             <p className="lead">{this.props.lesson.description}</p>
-              <div className="desired-wrapper card">
-                <p>Bob tells you he would like a hamburger with: </p>
+            <div className="row">
+              <div className="six columns card">
+                <p className="lead">Bob tells you he would like a hamburger with: </p>
                 <p className="subtext">top</p>
                 <div>{desiredIngredients}</div>
                 <p className="subtext">bottom</p>
               </div>
-            <hr />
-            <div className="row">
-              <div className="six columns">
-                <p>You scribble a quick drawing on your notepad:</p>
-              </div>
-              <div className="six columns">
+              <div className="six columns card">
+                <p className="lead">You scribble a quick drawing on your notepad:</p>
                 <Request toppings={toppings} requestString={this.props.lesson.desiredRegex}/>
               </div>
             </div>
-            <p>The chef looks for the ingredients...</p>
-            <div className="row btn-row">
-              <div className="columns six">
-                <button className="button-primary" onClick={this._checkRegex}>Find Ingredients</button>
-              </div>
-              <div className="columns six">
-                {successButton}
-              </div>
+            <p className="lead">The chef looks for the ingredients...</p>
+            <button className="button-primary" onClick={this._checkRegex}>Find Ingredients</button>
+            <div className="burger-area">
+              {output}
             </div>
-              <div className="burger-area">
-                {output}
-              </div>
-              <div className="card burger-card">
-                <div className="burger-card-cell">
+            <div className={burgerResultStyling}>
+              <h3>Success!</h3>
+              <div className="row">
+                <div className="burger-result-cell six columns">
                   {burgerResult}
                 </div>
+                <div className="six columns">
+                  <p><i className="fa fa-smile-o user-medium"></i></p>
+                  <NextLessonButton lessonNumber={this.props.lesson.number} text="Next Lesson" />
+                </div>
               </div>
+            </div>
           </div>
         </div>
       </div>

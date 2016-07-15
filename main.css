@@ -126,6 +126,7 @@ nav .title {
 
 .lesson-card {
   font-size: 2rem;
+  text-align: center;
 }
 
 .lead {
@@ -148,6 +149,10 @@ nav .title {
 .user-big {
   font-size: 20rem;
   margin-bottom: 3rem;
+}
+
+.user-medium {
+  font-size: 10rem;
 }
 
 .intro {
@@ -175,12 +180,19 @@ nav .title {
   vertical-align: middle;
 }
 
-.burger-card {
+.burger-result {
   position: relative;
   text-align: center;
+  opacity: 0;
 }
 
-.burger-card-cell {
+.burger-result.complete {
+  opacity: 1;
+  transition: opacity 2s ease;
+  transition-delay: 1s;
+}
+
+.burger-result-cell {
   padding-top: 5.8rem;
 }
 
