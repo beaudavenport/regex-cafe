@@ -85,7 +85,7 @@ nav .title {
 .regex-char {
   margin-left: 10px;
   margin-right: 10px;
-  font-size: 3rem;
+  font-size: 6rem;
 }
 
 .order-image, .order-ingredient {
@@ -126,6 +126,11 @@ nav .title {
 
 .lesson-card {
   font-size: 2rem;
+  text-align: center;
+}
+
+.order-area {
+  margin-bottom: 3rem;
 }
 
 .lead {
@@ -148,6 +153,10 @@ nav .title {
 .user-big {
   font-size: 20rem;
   margin-bottom: 3rem;
+}
+
+.user-medium {
+  font-size: 10rem;
 }
 
 .intro {
@@ -175,13 +184,27 @@ nav .title {
   vertical-align: middle;
 }
 
-.burger-card {
+.burger-result {
   position: relative;
   text-align: center;
+  opacity: 0;
 }
 
-.burger-card-cell {
-  padding-top: 5.8rem;
+.burger-result.complete {
+  opacity: 1;
+  transition: opacity 2s ease;
+  transition-delay: 1s;
+}
+
+.burger-result-cell {
+  transform: rotate(90deg);
+  padding-top: 5.3rem;
+}
+
+.burger-result.complete .burger-result-cell {
+  transform: none;
+  transition: transform 1s ease;
+  transition-delay: 2s;
 }
 
 .desired-wrapper {
@@ -192,7 +215,7 @@ nav .title {
 
 .horizontal {
   position: relative;
-  margin-top: -5.8rem;
+  margin-top: -5.3rem;
 }
 
 .horizontal img {
