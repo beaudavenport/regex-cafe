@@ -1,6 +1,6 @@
 var Request = React.createClass({
   render: function() {
-    var requestContent = this.props.requestString.split('').map(function(topping, index) {
+    var requestContent = this.props.requestString.split('|').map(function(topping, index) {
       var toppingEntry = this.props.toppings[topping];
       return toppingEntry !== undefined
         ? <img key={'topping-' + index} src={toppingEntry.image}/>
@@ -50,7 +50,7 @@ var Lesson = React.createClass({
 
   _checkRegex: function() {
     this.setState({
-      match: this.props.lesson.availableRegex.match(new RegExp(this.props.lesson.desiredRegex))
+      match: this.props.lesson.availableRegex.match(new RegExp(this.props.lesson.desiredRegex.split('|').join('')))
     });
   },
 

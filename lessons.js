@@ -29,7 +29,7 @@ var lessons = [
         name: 'american cheese'
       }
     ],
-    desiredRegex: '&1',
+    desiredRegex: '&|1',
     availableRegex: '12&a&123!123abcd !&@'
   },
   {
@@ -49,7 +49,27 @@ var lessons = [
         name: 'american OR gouda cheese'
       }
     ],
-    desiredRegex: '&[12]',
+    desiredRegex: '&|[|1|2|]',
     availableRegex: 'ca&23@ 23&3a'
+  },
+  {
+    number: 4,
+    name: 'Lesson Four: Any cheese',
+    description: 'Less picky still, Bob requests a hamburger with one piece of ANY cheese. '
+      + 'Luckily for the chef, all the cheese is kept in a bin with the "\\d" symbol on it... ',
+    desiredIngredients: [
+      {
+        quantity: 1,
+        symbols: '&',
+        name: 'hamburger patty'
+      },
+      {
+        quantity: 1,
+        symbols: '1',
+        name: 'ANY cheese'
+      }
+    ],
+    desiredRegex: '&|\\d',
+    availableRegex: 'ca&3@ 23&da'
   }
 ];
