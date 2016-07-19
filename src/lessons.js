@@ -1,4 +1,4 @@
-var lessons = [
+export default [
   {
     number: 1,
     name: 'Lesson One: Plainest of the Plain',
