@@ -13,9 +13,9 @@ class Request extends React.Component {
         : <span key={'topping-' + index} className="regex-char">{topping}</span>;
     });
     return (
-      <div className="burger-area"><img src="images/bun-bottom-400.png"/>
+      <div className="burger-area"><img src="dist/images/bun-bottom-400.png"/>
         {requestContent}
-        <img src="images/bun-top-400.png"/></div>
+        <img src="dist/images/bun-top-400.png"/></div>
     );
   }
 }

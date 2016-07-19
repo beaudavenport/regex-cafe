@@ -15,11 +15,11 @@ class Result extends React.Component {
     return (
       <div className="burger-result-wrapper">
         <div className="horizontal" style={{zIndex: result.length + 1}}>
-          <img src="images/bun-top-400.png"/>
+          <img src="dist/images/bun-top-400.png"/>
         </div>
         {result}
         <div className="horizontal" style={{zIndex: 0}}>
-          <img src="images/bun-bottom-400.png"/>
+          <img src="dist/images/bun-bottom-400.png"/>
         </div>
       </div>
     );
