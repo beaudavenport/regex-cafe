@@ -4,12 +4,22 @@
   "description": "Learn about Regex by making hamburgers.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "bundle": "webpack"
   },
   "author": "Beau Davenport",
   "license": "MIT",
   "devDependencies": {
+    "babel-core": "^6.10.4",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.11.1",
     "eslint": "^3.0.0",
-    "eslint-plugin-react": "^5.2.2"
+    "eslint-plugin-react": "^5.2.2",
+    "react-dom": "^15.2.1",
+    "webpack": "^1.13.1"
+  },
+  "dependencies": {
+    "react": "^15.2.1"
   }
 }
