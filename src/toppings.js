@@ -1,4 +1,4 @@
-var toppings = {
+export default {
   'bun-right': {
     image: 'images/bun-bottom-400.png'
   },
