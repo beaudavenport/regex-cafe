@@ -12,10 +12,16 @@ class Lesson extends React.Component {
     };
   }
 
+  _conditionallyScroll(el) {
+    if(el.getBoundingClientRect().bottom > window.innerHeight) {
+      el.scrollIntoView(false);
+    }
+  }
   _checkRegex() {
     this.setState({
       match: this.props.lesson.availableRegex.match(new RegExp(this.props.lesson.desiredRegex.split('|').join('')))
     });
+    this._conditionallyScroll(document.getElementById(`burger-result-${this.props.lesson.number}-next`));
   }
 
   render() {
@@ -56,7 +62,7 @@ class Lesson extends React.Component {
     });
 
     return (
-      <div className="card-wrapper"id={`lesson-${this.props.lesson.number}`}>
+      <div className="card-wrapper" id={`lesson-${this.props.lesson.number}`}>
         <div className="card-wrapper-cell">
           <div className="lesson-card">
             <h3>{this.props.lesson.name}</h3>
@@ -99,7 +105,9 @@ class Lesson extends React.Component {
                   <p><span className="lead">And found this result:</span> {this.state.match === null ? null : this.state.match[0]}</p>
                 </div>
             </div>
-            <NextLessonButton lessonNumber={this.props.lesson.number} text="Next Lesson" />
+            <div id={`burger-result-${this.props.lesson.number}-next`} >
+              <NextLessonButton lessonNumber={this.props.lesson.number} text="Next Lesson" />
+            </div>
             </div>
           </div>
         </div>

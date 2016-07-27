@@ -21282,11 +21282,19 @@
 	  }
 
 	  _createClass(Lesson, [{
+	    key: '_conditionallyScroll',
+	    value: function _conditionallyScroll(el) {
+	      if (el.getBoundingClientRect().bottom > window.innerHeight) {
+	        el.scrollIntoView(false);
+	      }
+	    }
+	  }, {
 	    key: '_checkRegex',
 	    value: function _checkRegex() {
 	      this.setState({
 	        match: this.props.lesson.availableRegex.match(new RegExp(this.props.lesson.desiredRegex.split('|').join('')))
 	      });
+	      this._conditionallyScroll(document.getElementById('burger-result-' + this.props.lesson.number + '-next'));
 	    }
 	  }, {
 	    key: 'render',
@@ -21483,7 +21491,11 @@
 	                  )
 	                )
 	              ),
-	              _react2.default.createElement(_NextLessonButton2.default, { lessonNumber: this.props.lesson.number, text: 'Next Lesson' })
+	              _react2.default.createElement(
+	                'div',
+	                { id: 'burger-result-' + this.props.lesson.number + '-next' },
+	                _react2.default.createElement(_NextLessonButton2.default, { lessonNumber: this.props.lesson.number, text: 'Next Lesson' })
+	              )
 	            )
 	          )
 	        )
